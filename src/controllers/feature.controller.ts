@@ -56,7 +56,7 @@ export const checkHasFeaturePermission = async (
     } as Feature);
 
     if (!featureExist) {
-      //if feature not exist
+      //feature not exist
       return res.status(500).json({ message: messages.MSG0005 });
     }
 
@@ -69,6 +69,6 @@ export const checkHasFeaturePermission = async (
       ? res.status(200).json({ canAccess: featurePermission.enable })
       : res.status(500).json({ canAccess: false, message: messages.MSG0004 });
   } catch (err) {
-    return res.status(500).json({ error: err });
+    return res.status(500).send();
   }
 };

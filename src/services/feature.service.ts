@@ -13,20 +13,30 @@ export const createFeature = async (newFeature: Feature) => {
 };
 
 export const getFeature = async (feature: Feature) => {
-  const f = await prisma.feature.findUnique({
+  const aFeature = await prisma.feature.findUnique({
     where: {
       name: feature.name,
     },
   });
 
-  return f;
+  return aFeature;
 };
 
 export const getAllFeatures = async () => {
-  const fArray = await prisma.feature.findMany({
-    include: { featurePermissions: true },
+  const features = await prisma.feature.findMany({
+    include: {
+      featurePermissions: {
+        select: {
+          id: true,
+          email: true,
+          enable: true,
+          createdAt: true,
+          updatedAt: true,
+        },
+      },
+    },
   });
-  return fArray;
+  return features;
 };
 
 //Feature Permission

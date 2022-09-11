@@ -16,6 +16,12 @@ export const createValidationFor = (route: string) => {
     case "createFeature":
       return [check("name").not().isEmpty().withMessage(messages.MSG0000)];
 
+    case "checkFeatureAccess":
+      return [
+        check("featureName").not().isEmpty().withMessage(messages.MSG0000),
+        check("email").not().isEmpty().withMessage(messages.MSG0001),
+      ];
+
     default:
       return [];
   }

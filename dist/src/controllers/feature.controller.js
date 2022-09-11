@@ -88,7 +88,7 @@ const checkHasFeaturePermission = (req, res) => __awaiter(void 0, void 0, void 0
             name: req.query.featureName,
         });
         if (!featureExist) {
-            //if feature not exist
+            //feature not exist
             return res.status(500).json({ message: messages_1.default.MSG0005 });
         }
         const featurePermission = yield FeatureService.getFeaturePermission(req.query.featureName, req.query.email);
@@ -97,7 +97,7 @@ const checkHasFeaturePermission = (req, res) => __awaiter(void 0, void 0, void 0
             : res.status(500).json({ canAccess: false, message: messages_1.default.MSG0004 });
     }
     catch (err) {
-        return res.status(500).json({ error: err });
+        return res.status(500).send();
     }
 });
 exports.checkHasFeaturePermission = checkHasFeaturePermission;

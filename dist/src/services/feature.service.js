@@ -21,19 +21,29 @@ const createFeature = (newFeature) => __awaiter(void 0, void 0, void 0, function
 });
 exports.createFeature = createFeature;
 const getFeature = (feature) => __awaiter(void 0, void 0, void 0, function* () {
-    const f = yield prisma.feature.findUnique({
+    const aFeature = yield prisma.feature.findUnique({
         where: {
             name: feature.name,
         },
     });
-    return f;
+    return aFeature;
 });
 exports.getFeature = getFeature;
 const getAllFeatures = () => __awaiter(void 0, void 0, void 0, function* () {
-    const fArray = yield prisma.feature.findMany({
-        include: { featurePermissions: true },
+    const features = yield prisma.feature.findMany({
+        include: {
+            featurePermissions: {
+                select: {
+                    id: true,
+                    email: true,
+                    enable: true,
+                    createdAt: true,
+                    updatedAt: true,
+                },
+            },
+        },
     });
-    return fArray;
+    return features;
 });
 exports.getAllFeatures = getAllFeatures;
 //Feature Permission

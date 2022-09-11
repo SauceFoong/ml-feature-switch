@@ -9,7 +9,12 @@ const apiRoutes = express.Router();
 
 //Feature Routes
 apiRoutes.get("/feature/get-all", FeatureController.getAllFeatures);
-apiRoutes.get("/feature", FeatureController.checkHasFeaturePermission);
+apiRoutes.get(
+  "/feature",
+  createValidationFor("checkFeatureAccess"),
+  checkValidationResult,
+  FeatureController.checkHasFeaturePermission
+);
 apiRoutes.post(
   "/feature",
   createValidationFor("createUpdateFeaturePermission"),

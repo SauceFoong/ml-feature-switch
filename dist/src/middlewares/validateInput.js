@@ -17,6 +17,11 @@ const createValidationFor = (route) => {
             ];
         case "createFeature":
             return [(0, express_validator_1.check)("name").not().isEmpty().withMessage(messages_1.default.MSG0000)];
+        case "checkFeatureAccess":
+            return [
+                (0, express_validator_1.check)("featureName").not().isEmpty().withMessage(messages_1.default.MSG0000),
+                (0, express_validator_1.check)("email").not().isEmpty().withMessage(messages_1.default.MSG0001),
+            ];
         default:
             return [];
     }

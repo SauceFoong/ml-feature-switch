@@ -1,8 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import users from "./seeders/users";
 import features from "./seeders/features";
-
-import bcrypt from "bcryptjs";
 
 //This file is the logic to go through the db in order to seed our db
 const prisma = new PrismaClient();
@@ -16,17 +13,6 @@ const main = async () => {
       },
     });
   }
-
-  //Users
-  //   for (let user of users) {
-  //     await prisma.user.create({
-  //       data: {
-  //         email: user.email,
-  //         password: bcrypt.hashSync(user.password, 8),
-  //         fullName: user.fullName,
-  //       },
-  //     });
-  //   }
 };
 
 main()

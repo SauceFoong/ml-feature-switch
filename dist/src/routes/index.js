@@ -32,7 +32,7 @@ const validateInput_1 = require("../middlewares/validateInput");
 const apiRoutes = express_1.default.Router();
 //Feature Routes
 apiRoutes.get("/feature/get-all", FeatureController.getAllFeatures);
-apiRoutes.get("/feature", FeatureController.checkHasFeaturePermission);
+apiRoutes.get("/feature", (0, validateInput_1.createValidationFor)("checkFeatureAccess"), validateInput_1.checkValidationResult, FeatureController.checkHasFeaturePermission);
 apiRoutes.post("/feature", (0, validateInput_1.createValidationFor)("createUpdateFeaturePermission"), validateInput_1.checkValidationResult, FeatureController.createUpdateFeaturePermission);
 apiRoutes.post("/feature/create", (0, validateInput_1.createValidationFor)("createFeature"), validateInput_1.checkValidationResult, FeatureController.createFeature);
 exports.default = apiRoutes;

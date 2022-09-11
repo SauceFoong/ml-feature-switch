@@ -25,16 +25,6 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
             },
         });
     }
-    //Users
-    //   for (let user of users) {
-    //     await prisma.user.create({
-    //       data: {
-    //         email: user.email,
-    //         password: bcrypt.hashSync(user.password, 8),
-    //         fullName: user.fullName,
-    //       },
-    //     });
-    //   }
 });
 main()
     .catch((error) => {
