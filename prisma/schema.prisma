@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// model User {
+//   id String @id @default(uuid())
+//   email String @unique
+//   fullName String 
+//   password String 
+//   createdAt DateTime @default(now())
+// }
+
+model Feature {
+  id String @id @default(uuid())
+  name String @unique 
+  featurePermissions FeaturePermission[]
+  createdAt DateTime @default(now())
+}
+
+model FeaturePermission {
+  id String @id @default(uuid())
+  email String 
+  enable Boolean 
+  feature Feature @relation(fields: [featureName], references: [name])
+  featureName String 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([featureName, email], name: "featurePermissionIdentifier")
+}
