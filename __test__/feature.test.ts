@@ -10,7 +10,6 @@ describe("POST /feature", () => {
         email: "sheeyao@hotmail.com",
         enable: true,
       });
-      console.log("Helo", response.statusCode);
       expect(response.statusCode).toBe(200);
     });
   });
@@ -36,7 +35,7 @@ describe("POST /feature", () => {
   });
 
   describe("Not providing all three properties, missing some keys", () => {
-    test("Missing featureName, should respond with a 403 status code", async () => {
+    test("missing featureName, should respond with a 403 status code", async () => {
       const response = await request(app).post("/feature").send({
         email: "sheeyao@hotmail.com",
         enable: true,
@@ -44,7 +43,7 @@ describe("POST /feature", () => {
       expect(response.statusCode).toBe(403);
     });
 
-    test("Missing email, should respond with a 403 status code", async () => {
+    test("missing email, should respond with a 403 status code", async () => {
       const response = await request(app).post("/feature").send({
         featureName: "createTransaction",
         enable: true,
@@ -52,7 +51,7 @@ describe("POST /feature", () => {
       expect(response.statusCode).toBe(403);
     });
 
-    test("Missing enable, should respond with a 403 status code", async () => {
+    test("missing enable, should respond with a 403 status code", async () => {
       const response = await request(app).post("/feature").send({
         featureName: "createTransaction",
         email: "sheeyao@hotmail.com",
