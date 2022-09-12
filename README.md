@@ -41,6 +41,12 @@ Start running the application by typing command:
 npm run dev
 ```
 
+## Run Acceptance Testing with command:
+
+```
+npm run test
+```
+
 ## Built Using
 
 - NodeJS (ExpressJS Framework)
