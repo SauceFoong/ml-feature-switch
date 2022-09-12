@@ -41,6 +41,13 @@ Start running the application by typing command:
 npm run dev
 ```
 
+Or run with Docker
+
+```
+docker build . -t ml-backend-assignment:dev
+docker-compose up -d
+```
+
 ## Run Acceptance Testing with command:
 
 ```
@@ -53,6 +60,7 @@ npm run test
 - Typescript
 - Prisma ORM
 - PostgreSQL
+- Docker
 
 ## Watch Demo
 
