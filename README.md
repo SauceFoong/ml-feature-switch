@@ -10,13 +10,15 @@ git clone https://github.com/SauceFoong/ml-feature-switch.git
 
 ### Step 2: Install dependencies
 
+Go the cloned file directory and type the command:
+
 ```
 npm install
 ```
 
 ### Step 3: Environment Variables
 
-Create the file .env in root directory and copy the text below into the env file. Insert the values base on the tag description respectively. (Let me know if you need the values or you may create your own)
+Create the .env file in the root directory and copy the text below into the env file. Then, please insert the values base on the tag description respectively. (Let me know if you need the values or you may create your own)
 
 ```
 DATABASE_URL="postgresql://<DB_USER>:<DB_PASSWORD>@<HOST>:5432/<DB_NAME>?schema=public"
@@ -31,6 +33,8 @@ DATABASE_URL="postgresql://<DB_USER>:<DB_PASSWORD>@<HOST>:5432/<DB_NAME>?schema=
 ```
 
 ### Step 3: Run the migration / Reset the DB
+
+You can run the first command to make migrate and execute it or the second command to reset your db
 
 ```
 npx prisma migrate dev --name <migration_filename>
