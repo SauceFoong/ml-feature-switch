@@ -18,30 +18,22 @@ npm install
 
 ### Step 3: Environment Variables
 
-Create the .env file in the root directory and copy the text below into the env file. Then, please insert the values base on the tag description respectively. (Let me know if you need the values or you may create your own)
-
-```
-DATABASE_URL="postgresql://<DB_USER>:<DB_PASSWORD>@<HOST>:5432/<DB_NAME>?schema=public"
-```
-
-### Step 3: Environment Variables
-
 Create the file .env in root directory and insert the value below: (Let me know if you need the values or you may create your own)
 
 ```
 DATABASE_URL="postgresql://<DB_USER>:<DB_PASSWORD>@<HOST>:5432/<DB_NAME>?schema=public"
 ```
 
-### Step 3: Run the migration / Reset the DB
+### Step 4: Populate the tables with either one command (Run the migration / Reset the DB)
 
-You can run the first command to make migrate and execute it or the second command to reset your db
+You can run the first command to make migrate and execute it or the second command to reset your db.
 
 ```
 npx prisma migrate dev --name <migration_filename>
 npx prisma migrate reset
 ```
 
-### Step 4: Run the application
+### Step 5: Run the application
 
 Start running the application by typing command:
 
