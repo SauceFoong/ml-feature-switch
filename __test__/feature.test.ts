@@ -1,15 +1,16 @@
 import request from "supertest";
-import app from "../index";
+import app from "../src";
 
 //Test for the POST request API in the requirement
 describe("POST /feature", () => {
-  describe("given a featureName, email and enable", () => {
+  describe("Given a featureName, email and enable", () => {
     test("should respond with a 200 status code", async () => {
       const response = await request(app).post("/feature").send({
         featureName: "createTransaction",
         email: "sheeyao@hotmail.com",
         enable: true,
       });
+      console.log("Helo", response.statusCode);
       expect(response.statusCode).toBe(200);
     });
   });
@@ -85,6 +86,13 @@ describe("GET /feature", () => {
         .get("/feature?email=sheeyao@hotmail.com&featureName=createTransaction")
         .send();
       expect(response.body).toEqual({ canAccess: true });
+    });
+
+    test("should respond with json object with key canAccess as false", async () => {
+      const response = await request(app)
+        .get("/feature?email=sauce@hotmail.com&featureName=createTransaction")
+        .send();
+      expect(response.body).toEqual({ canAccess: false });
     });
   });
 });

@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const client_1 = require("@prisma/client");
+const featurePermission_1 = __importDefault(require("./seeders/featurePermission"));
 const features_1 = __importDefault(require("./seeders/features"));
 //This file is the logic to go through the db in order to seed our db
 const prisma = new client_1.PrismaClient();
@@ -23,6 +24,12 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
             data: {
                 name: feature.name,
             },
+        });
+    }
+    //Feature Permissions
+    for (let fp of featurePermission_1.default) {
+        yield prisma.featurePermission.create({
+            data: fp,
         });
     }
 });
